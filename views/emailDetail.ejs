@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Email Details</title>
+</head>
+<body>
+    <div class="email-detail-container">
+        <div class="email-header">
+            <h1><%= email.subject || "No Subject" %></h1>
+            <div class="sent-date"><%= new Date(email.sent_at).toLocaleString() %></div>
+        </div>
+        
+        <div class="email-section">
+            <strong>From:</strong> <%= email.senderFullName %>
+        </div>
+
+        <div class="email-section">
+            <strong>Message:</strong>
+        </div>
+        
+        <div class="email-body">
+            <p style="margin: 0; padding: 0; text-align: left;"><%= email.body %></p>
+        </div>
+
+        <% if (email.attachment_filename && email.attachment_originalname) { %>
+            <div class="attachment">
+                <strong>Attachment:</strong>
+                <a href="/uploads/<%= email.attachment_filename %>" download="<%= email.attachment_originalname %>">
+                    <%= email.attachment_originalname %>
+                </a>
+            </div>
+        <% } %>
+
+        <div class="back-links">
+            <a href="/inbox">Back to Inbox</a> | <a href="/outbox">Back to Outbox</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/stylesForAuth.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign In</h1>
+        <% if (typeof error !== 'undefined' && error) { %>
+            <p class="error"><%= error %></p>
+        <% } %>
+        <form action="/signin" method="POST">
+            <label>Email:</label>
+            <input type="text" name="email" required>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Sign up here</a>.</p>
+    </div>
+</body>
+</html>

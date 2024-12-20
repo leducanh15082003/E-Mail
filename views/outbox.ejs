@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/styleForInbox.css"> -->
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, <%= userFullName %></h1>
+        <a href="/signout">Sign out</a>
+    </header>
+
+    <nav>
+        <a href="/compose" class="<%= page === 'compose' ? 'active' : '' %>">Compose</a>
+        <a href="/inbox" class="<%= page === 'inbox' ? 'active' : '' %>">Inbox</a>
+        <a href="/outbox" class="<%= page === 'outbox' ? 'active' : '' %>">Outbox</a>
+    </nav>   
+
+    <% if (error) { %>
+        <div class="error">
+            <p><%= error %></p>
+        </div>
+    <% } %>
+
+    <div class="email-list">
+        <% if (sentEmails.length > 0) { %>
+            <% sentEmails.forEach(email => { %>
+                <div data-email-id="<%= email.id %>" class="email-item">
+                    <input type="checkbox" class="email-checkbox" data-email-id="<%= email.id %>"/>
+                    <div class="email-sender"><strong>To:</strong> <%= email.recipientFullName %></div>
+                    <div class="email-subject"><a href="/emails/<%= email.id %>"><%= email.subject %></a></div>
+                    <div class="email-date"><strong>Sent:</strong> <%= new Date(email.sent_at).toLocaleString() %></div>
+                </div>
+            <% }); %>
+            <button id="deleteButton" class="delete-button">Delete Selected Emails</button>
+        <% } else { %>
+            <p>No emails found.</p>
+        <% } %>
+    </div>
+
+    <div class="pagination">
+        <% if (currentPage > 1) { %>
+            <a href="/outbox?page=<%= currentPage - 1 %>">Previous</a>
+        <% } %>
+        <span class="current-page">Page <%= currentPage %> of <%= totalPages %></span>
+        <% if (currentPage < totalPages) { %>
+            <a href="/outbox?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+    </div>
+    <script src="/js/handleDelete.js"></script>
+</body>
+</html>
