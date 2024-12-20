@@ -1,16 +1,16 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password: '123456',
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || '3306',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '123456',
   multipleStatements: true 
 });
 
 const dbSetupQuery = `
-  CREATE DATABASE IF NOT EXISTS wpr2101040017;
-  USE wpr2101040017;
+  CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME || 'wpr2101040017'};
+  USE ${process.env.DB_NAME || 'wpr2101040017'};
   
   CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,

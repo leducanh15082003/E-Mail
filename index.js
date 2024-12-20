@@ -13,7 +13,7 @@ const route403 = require("./routes/403");
 const deleteEmailRoute = require('./routes/deleteEmails');
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
