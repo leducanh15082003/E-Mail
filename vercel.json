@@ -7,11 +7,11 @@
       }
     ],
     "env": {
-      "DB_HOST": "your-remote-db-host",
-      "DB_PORT": "your-remote-db-port",
-      "DB_USER": "your-remote-db-user",
-      "DB_PASSWORD": "your-remote-db-password",
-      "DB_NAME": "your-remote-db-name"
+      "DB_HOST": "sql12.freesqldatabase.com",
+      "DB_PORT": "3306",
+      "DB_USER": "sql12753647",
+      "DB_PASSWORD": "33Yx2j36Zu",
+      "DB_NAME": "sql12753647"
     }
   }
   
