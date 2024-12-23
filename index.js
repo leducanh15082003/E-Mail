@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const setupDatabase = require('./dbsetup');
 
 const db = require("./db/database")
 const signinRoute = require('./routes/signin');
@@ -32,6 +33,17 @@ app.use('/', signoutRoute);
 app.use('/', route403);
 app.use('/', deleteEmailRoute);
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+setupDatabase()
+  .then(() => {
+    console.log('Database setup completed');
+    app.listen(PORT, () => {
+      console.log(`Server running at http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Database setup failed', err);
+  });
+
+// app.listen(PORT, () => {
+//     console.log(`Server running at http://localhost:${PORT}`);
+// });
