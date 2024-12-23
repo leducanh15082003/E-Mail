@@ -15,6 +15,7 @@
       "CLOUDINARY_CLOUD_NAME": "dlqpdl4mz",
       "CLOUDINARY_API_KEY": "461146261413479",
       "CLOUDINARY_API_SECRET": "YJ03eeKoRH21wUx3dyPStyUK4pw"
-    }
+    },
+    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
   }
   
