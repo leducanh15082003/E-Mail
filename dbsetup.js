@@ -96,6 +96,7 @@ async function setupDatabase() {
       attachment_originalname VARCHAR(255),
       is_deleted_for_sender BOOLEAN DEFAULT FALSE,
       is_deleted_for_receiver BOOLEAN DEFAULT FALSE,
+      attachment_url VARCHAR(255),
       sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (sender_id) REFERENCES users(id),
       FOREIGN KEY (receiver_id) REFERENCES users(id)

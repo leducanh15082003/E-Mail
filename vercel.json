@@ -11,7 +11,10 @@
       "DB_PORT": "3306",
       "DB_USER": "sql12753647",
       "DB_PASSWORD": "33Yx2j36Zu",
-      "DB_NAME": "sql12753647"
+      "DB_NAME": "sql12753647",
+      "CLOUDINARY_CLOUD_NAME": "dlqpdl4mz",
+      "CLOUDINARY_API_KEY": "461146261413479",
+      "CLOUDINARY_API_SECRET": "YJ03eeKoRH21wUx3dyPStyUK4pw"
     }
   }
   
